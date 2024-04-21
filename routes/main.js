@@ -84,7 +84,7 @@ module.exports = function (app) {
             email: user.email,
             type: user.userType,
           };
-          res.redirect(`/`);
+          res.redirect(fullPath(`/`));
         } else {
           res.render("login.ejs", {
             message: "Invalid email or password. Please try again.",
