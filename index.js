@@ -3,11 +3,11 @@ var express = require("express");
 var ejs = require("ejs");
 var bodyParser = require("body-parser");
 
-const expressLayouts = require('express-ejs-layouts');
+const expressLayouts = require("express-ejs-layouts");
 
 // Create the express application object
 const app = express();
-const port = 8000;
+const port = process.env.PORT || 8000;
 const mysql = require("mysql");
 const session = require("express-session");
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -59,5 +59,7 @@ var blogData = { blogName: "Employability for the Youth" };
 require("./routes/main")(app, blogData);
 
 // Start the web app listening
-app.listen(port, () => console.log("Example app listening on port ${port}!"));
+app.listen(port, "0.0.0.0", () =>
+  console.log(`Example app listening on port ${port}!`)
+);
 module.exports = app;
