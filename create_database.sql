@@ -21,6 +21,16 @@ SET time_zone = "+00:00";
 -- Database: `employability`
 --
 
+-- Check if the database exists and drop it if it does
+DROP DATABASE IF EXISTS employability;
+
+-- Create the database
+CREATE DATABASE employability;
+
+-- Use the newly created database
+USE employability;
+
+
 -- --------------------------------------------------------
 
 --
