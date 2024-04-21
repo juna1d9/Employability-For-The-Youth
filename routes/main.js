@@ -9,14 +9,6 @@ const { Console } = require("console");
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
-// Set a base URL variable
-const baseURL = "/usr/674";
-
-// Use this function to prepend base URL to the paths
-function fullPath(path) {
-  return baseURL + path;
-}
-
 const options = {
   height: "10.5in", // allowed units: mm, cm, in, px
   width: "8in", // allowed units: mm, cm, in, pxI
@@ -28,7 +20,7 @@ module.exports = function (app) {
       res.locals.user = req.session.user;
       return next();
     }
-    res.redirect(fullPath("/login"));
+    res.redirect("/login");
   }
 
   function hasAppliedForJob(userId, jobId, callback) {
@@ -56,11 +48,11 @@ module.exports = function (app) {
   }
 
   // Handle our routes
-  app.get("/usr/674", authenticateUser, function (req, res) {
+  app.get("/", authenticateUser, function (req, res) {
     res.render("index.ejs");
   });
 
-  app.get(fullPath("/login"), function (req, res) {
+  app.get("/login", function (req, res) {
     res.render("login.ejs");
   });
 
@@ -84,7 +76,7 @@ module.exports = function (app) {
             email: user.email,
             type: user.userType,
           };
-          res.redirect(fullPath("/"));
+          res.redirect(`/usr/674`);
         } else {
           res.render("login.ejs", {
             message: "Invalid email or password. Please try again.",
@@ -103,7 +95,7 @@ module.exports = function (app) {
       if (err) {
         return res.redirect("/");
       }
-      res.redirect(fullPath("/login"));
+      res.redirect("/login");
     });
   });
 
@@ -140,7 +132,7 @@ module.exports = function (app) {
       if (error) {
         throw error;
       }
-      res.redirect(fullPath("/login"));
+      res.redirect("/login");
     });
   });
 
