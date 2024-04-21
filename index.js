@@ -22,11 +22,10 @@ app.use(
 
 const db = mysql.createConnection({
   host: "localhost",
-  user: "jahme014",
+  user: "root",
   password: "admin",
-  database: "LeoMessiGoat1",
+  database: "employability",
 });
-
 // Connecting to the database
 db.connect((err) => {
   if (err) {

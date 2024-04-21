@@ -48,7 +48,7 @@ module.exports = function (app) {
   }
 
   // Handle our routes
-  app.get("/", authenticateUser, function (req, res) {
+  app.get("/usr/674", authenticateUser, function (req, res) {
     res.render("index.ejs");
   });
 
