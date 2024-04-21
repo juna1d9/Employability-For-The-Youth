@@ -22,8 +22,8 @@ app.use(
 
 const db = mysql.createConnection({
   host: "localhost",
-  user: "jahme014",
-  password: "LeoMessiGoat1",
+  user: "user",
+  password: "youth",
   database: "employability",
 });
 // Connecting to the database
