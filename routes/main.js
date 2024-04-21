@@ -14,13 +14,21 @@ const options = {
   width: "8in", // allowed units: mm, cm, in, pxI
 };
 
+// Set a base URL variable
+const baseURL = "/usr/674";
+
+// Use this function to prepend base URL to the paths
+function fullPath(path) {
+  return baseURL + path;
+}
+
 module.exports = function (app) {
   function authenticateUser(req, res, next) {
     if (req.session.user) {
       res.locals.user = req.session.user;
       return next();
     }
-    res.redirect("/login");
+    res.redirect(fullPath(fullPath("/login")));
   }
 
   function hasAppliedForJob(userId, jobId, callback) {
@@ -52,7 +60,7 @@ module.exports = function (app) {
     res.render("index.ejs");
   });
 
-  app.get("/login", function (req, res) {
+  app.get(fullPath("/login"), function (req, res) {
     res.render("login.ejs");
   });
 
@@ -95,7 +103,7 @@ module.exports = function (app) {
       if (err) {
         return res.redirect("/");
       }
-      res.redirect("/login");
+      res.redirect(fullPath("/login"));
     });
   });
 
@@ -132,7 +140,7 @@ module.exports = function (app) {
       if (error) {
         throw error;
       }
-      res.redirect("/login");
+      res.redirect(fullPath("/login"));
     });
   });
 
