@@ -103,7 +103,7 @@ module.exports = function (app) {
       if (err) {
         return res.redirect("/");
       }
-      res.redirect(fullPath("/login"));
+      res.redirect(fullPath("/usr/674/login"));
     });
   });
 
