@@ -48,7 +48,7 @@ module.exports = function (app) {
   }
 
   // Handle our routes
-  app.get("/usr/674", authenticateUser, function (req, res) {
+  app.get("/", authenticateUser, function (req, res) {
     res.render("index.ejs");
   });
 
@@ -76,7 +76,7 @@ module.exports = function (app) {
             email: user.email,
             type: user.userType,
           };
-          res.redirect(`/usr/674`);
+          res.redirect(`/`);
         } else {
           res.render("login.ejs", {
             message: "Invalid email or password. Please try again.",
